@@ -1,88 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Recent Contact List</title>
-    <link rel="stylesheet" href="css/base.css" />
-  </head>
+	<head>
+		<meta charset="utf-8">
+		<title>Recent Contact List</title>
+		<link rel="stylesheet" href="css/base.css" />
+	</head>
 
-<!----------------------------Body Head Divider------------------------------->
   <body>
     <div id="content"></div>
     <script type="text/babel">
-			var socket = io();
-			socket.emit("myID", "Sindy Li");
+		var socket = io();
+		socket.emit("myID", "Sindy Li");
 
 {/*================================Some Devider=============================*/}
 
-			var data = [
-				{id:1, contactName:"Harry Potter", contactStatus:"online"},
-				{id:2, contactName:"Ron Weasley", contactStatus:"offline"},
-				{id:3, contactName:"Hermione Granger", contactStatus:"online"}
-			];
+		var data = [
+			{id:1, contactName:"Harry Potter", contactStatus:"online"},
+			{id:2, contactName:"Ron Weasley", contactStatus:"offline"},
+			{id:3, contactName:"Hermione Granger", contactStatus:"online"}
+		]; //data
 
-			var RecentContactBox= React.createClass({
-
-						for (var i = 0; i < data.length; i++) {
+		var RecentContactBox = React.createClass({
+						/*for (var i = 0; i < data.length; i++) {
 							data[i].contactStatus = contactStatus[i].contactStatus;
-							console.log(data[i])
+							console.log(data[i]);
 							console.log("hey")
-						}
+						} //for()
 
 
 				componentDidMount: function() {
-					console.log("hey")
+					console.log("hey");
 					socket.on("initialStatus", function(contactStatus) {
-						console.log("Got the status")
+						console.log("Got the status");
 						return 0;
-					})
-				},
+					}) socket.on()
+				} // componentDidMount ,*/
 
-				render: function() {
+			render: function() {
+				return (
+					<div>
+						<RecentContactList data = {this.props.data}/>
+					</div>
+				);
+			}; // render
+		}); // RecentContacBox
+
+		var RecentContactList = React.createClass({
+			render: function() {
+				var contactNodes = this.props.data.map(function(contact) {
 					return (
-						<div className="recentContactBox">
-							<RecentContactList data = {this.props.data}/>
-						</div>
+					  <Contact contactName={contact.contactName} contactStatus={contact.contactStatus} key={contact.id}>
+					  //</Contact>
 					);
-				}
-			});
+				});
+				return (
+					<div>
+						<h2>Contact List</h2>
+					  {contactNodes}
+					</div>
+				);
+			} // render
+		}); // RecentContactList
 
-			var RecentContactList = React.createClass({
-				render: function() {
-					var contactNodes = this.props.data.map(function(contact) {
-						return (
-						  <Contact contactName={contact.contactName} contactStatus={contact.contactStatus} key={contact.id}>
-						  //</Contact>
-						);
-					});
-					return (
-						<div className="recentContactList">
-							<h2>Contact List</h2>
-						  {contactNodes}
-						</div>
-					);
-				}
-			});
+		var Contact = React.createClass({
+			render: function() {
+				return (
+					<div>
+					  {this.props.contactName};
+					  <span> is </span>
+						{this.props.contactStatus};
+					</div>
+				);
+			} // render
+		}); // Contact
 
-			var Contact = React.createClass({
-				render: function() {
-					return (
-						<div className="contact">
-						  {this.props.contactName}
-						  <span> is </span>
-							{this.props.contactStatus}
-						</div>
-					);
-				}
-			});
-
-			ReactDOM.render(
-				<RecentContactBox data = {data}/>,
-				document.getElementById('content')
-			);
-
+		ReactDOM.render(
+			<RecentContactBox data = {data}/>,
+			document.getElementById('content')
+		); // render
     </script>
-  </body>
+</body>
 </html>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
