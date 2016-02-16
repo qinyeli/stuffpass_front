@@ -55,9 +55,11 @@
 				socket.on("initialStatus", function(contactStatus) {
 					console.log("Got the initial status");
 					_this.setState({dataState: contactStatus});
-				}).on("updataStatus", function(contactStatus) {
+				})
+				socket.on("updateStatus", function(contactStatus) {
 					console.log("Got update status");
-					_this.setState({dataState: contactStatus});
+					var oldState = _this.state.dataState;
+					_this.setState({dataState: contactStatus.concat(oldState) });
 				});
 			}, // componentDidMount
 
