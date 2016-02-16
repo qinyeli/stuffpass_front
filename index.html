@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Recent Contact List</title>
-		<link rel="stylesheet" href="css/base.css" />
-	</head>
+<head>
+	<meta charset="utf-8">
+	<title>Recent Contact List</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+</head>
 
-  <body>
-    <div id="content"></div>
+<body>
+  <div id="content"></div>
     <script type="text/babel">
 		var socket = io();
 		socket.emit("myID", "Sindy Li");
-
-{/*================================Some Devider=============================*/}
 
 		var data = [
 			{id:1, contactName:"Harry Potter", contactStatus:"online"},
@@ -20,37 +22,23 @@
 			{id:3, contactName:"Hermione Granger", contactStatus:"online"}
 		]; //data
 
-		var RecentContactBox = React.createClass({
-						/*for (var i = 0; i < data.length; i++) {
-							data[i].contactStatus = contactStatus[i].contactStatus;
-							console.log(data[i]);
-							console.log("hey")
-						} //for()
-
-
-				componentDidMount: function() {
-					console.log("hey");
-					socket.on("initialStatus", function(contactStatus) {
-						console.log("Got the status");
-						return 0;
-					}) socket.on()
-				} // componentDidMount ,*/
-
+		var Contact = React.createClass({
 			render: function() {
 				return (
 					<div>
-						<RecentContactList data = {this.props.data}/>
+					  {this.props.contactName}
+					  <span> is </span>
+						{this.props.contactStatus}
 					</div>
 				);
-			}; // render
-		}); // RecentContacBox
+			} // render
+		}); // Contact
 
 		var RecentContactList = React.createClass({
 			render: function() {
 				var contactNodes = this.props.data.map(function(contact) {
 					return (
-					  <Contact contactName={contact.contactName} contactStatus={contact.contactStatus} key={contact.id}>
-					  //</Contact>
+					  <Contact contactName={contact.contactName} contactStatus={contact.contactStatus} key={contact.id} />
 					);
 				});
 				return (
@@ -62,17 +50,23 @@
 			} // render
 		}); // RecentContactList
 
-		var Contact = React.createClass({
+		var RecentContactBox = React.createClass({
+			componentDidMount: function() {
+					console.log("hey");
+					socket.on("initialStatus", function(contactStatus) {
+						console.log("Got the status");
+						return 0;
+					}) // socket.on()
+				}, // componentDidMount
+
 			render: function() {
 				return (
 					<div>
-					  {this.props.contactName};
-					  <span> is </span>
-						{this.props.contactStatus};
+						<RecentContactList data = {this.props.data}/>
 					</div>
 				);
 			} // render
-		}); // Contact
+		}); // RecentContacBox
 
 		ReactDOM.render(
 			<RecentContactBox data = {data}/>,
@@ -81,9 +75,3 @@
     </script>
 </body>
 </html>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
