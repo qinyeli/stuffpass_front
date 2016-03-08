@@ -12,70 +12,7 @@
 
 <body>
   <div id="content"></div>
-    <script type="text/babel">
-		var socket = io();
-		socket.emit("myID", "Sindy Li");
-
-		var Contact = React.createClass({
-			render: function() {
-				return (
-					<div>
-					  {this.props.contactName}
-					  <span> is </span>
-						{this.props.contactStatus}
-					</div>
-				);
-			} // render
-		}); // Contact
-
-		var RecentContactList = React.createClass({
-			render: function() {
-				var contactNodes = this.props.data.map(function(contact) {
-					return (
-					  <Contact contactName={contact.contactName} contactStatus={contact.contactStatus} key={contact.id} />
-					);
-				});
-				return (
-					<div>
-						<h2>Contact List</h2>
-					  {contactNodes}
-					</div>
-				);
-			} // render
-		}); // RecentContactList
-
-		var RecentContactBox = React.createClass({
-			getInitialState: function() {
-				return {dataState: [{	id:0, contactName:"No one", contactStatus: "online"}] }
-				//This means I set the initial state of dataState to the prop data
-			},
-
-			componentDidMount: function() {
-				var _this = this;
-				socket.on("initialStatus", function(contactStatus) {
-					console.log("Got the initial status");
-					_this.setState({dataState: contactStatus});
-				})
-				socket.on("updateStatus", function(contactStatus) {
-					console.log("Got update status");
-					var oldState = _this.state.dataState;
-					_this.setState({dataState: contactStatus.concat(oldState) });
-				});
-			}, // componentDidMount
-
-			render: function() {
-				return (
-					<div>
-						<RecentContactList data = {this.state.dataState}/>
-					</div>
-				);
-			} // render
-		}); // RecentContacBox
-
-		ReactDOM.render(
-			<RecentContactBox/>,
-			document.getElementById('content')
-		); // render
-    </script>
+    <script type="text/babel"></script>
+    <script src="./public/bundle.js"></script>
 </body>
 </html>

@@ -4,13 +4,14 @@ console.log("Server running!")
 
 var contactStatus1 = [
 	{id:1, contactName:"Harry Potter", contactStatus: "offline"},
-	{id:2, contactName:"Ron Weasley", contactStatus: "online"}
+	{id:2, contactName:"Ron Weasley", contactStatus: "offline"},
+	{id:3, contactName:"Hermione Granger", contactStatus: "offline"},
+	{id:4, contactName:"Albus Dumbledore", contactStatus: "online"}
 ];
 
 var contactStatus2 = [
-	{id:3, contactName:"Hermione Granger", contactStatus: "offline"},
-	{id:2, contactName:"Ron Weasley", contactStatus: "offline"},
-	{id:4, contactName:"Albus Dumbledore", contactStatus: "online"}
+	{id:2, contactName:"Ron Weasley", contactStatus: "online"},
+	{id:4, contactName:"Albus Dumbledore", contactStatus: "offline"}
 ];
 
 io.on('connection', function(socket){
