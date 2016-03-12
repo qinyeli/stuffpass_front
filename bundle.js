@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module './rececntContactBox.js' from '/home/qinyeli/Desktop/stuffpass_front/javascripts'");
