@@ -1,4 +1,5 @@
 import RecentContactList from './recentContactList.js';
+import React from 'react';
 
 var RecentContactBox = React.createClass({
 	getInitialState: function() {

@@ -1,4 +1,5 @@
 import Contact from './contact.js';
+import React from 'react';
 
 var RecentContactList = React.createClass({
 	render: function() {
