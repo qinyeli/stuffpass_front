@@ -9,7 +9,7 @@ var RecentContactList = React.createClass({
 			);
 		});
 		return (
-			<div>
+			<div style={Background_ContactList} className="contactList">
 				<h2>Contact List</h2>
 			  {contactNodes}
 			</div>

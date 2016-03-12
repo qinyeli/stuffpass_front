@@ -1,8 +1,8 @@
-import RecentContactBox from './recentContactBox.js';
+import Wrapper from './wrapper.js';
 import React from 'react';
 import { render } from 'react-dom';
 
 render(
-	<RecentContactBox/>,
+	<Wrapper/>,
 	document.getElementById('content')
 ); // render
