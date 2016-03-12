@@ -4,8 +4,8 @@ var Contact = React.createClass({
 	render: function() {
 		if (this.props.Status=="online"){
 			return (
-			<div style={Background_Contacts} className="contact">
-			<span style={StatusTrue}>
+			<div className="contact">
+			<span className = "StatusTrue">
 	        O  
 	        </span>
 	        <span className="contactName">
@@ -16,8 +16,8 @@ var Contact = React.createClass({
 			</div>
 		);} else {
 				return(
-      <div style={Background_Contacts} className="contact">
-      <span style={StatusFalse}>
+      <div className="contact">
+      <span className = "StatusFalse">
        O 
         </span>
         <span className="contactName">

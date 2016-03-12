@@ -8,7 +8,7 @@ var Wrapper = React.createClass({
     return(
       <div className="wrapper">
       <h1>StuffPass</h1>
-      <ContactBox/>
+      <RecentContactBox/>
       <h2>Chatting Part</h2>
       <InputBox />
       </div>

@@ -24,7 +24,7 @@ var RecentContactBox = React.createClass({
 
 	render: function() {
 		return (
-			<div style = {Background_ContactBox} className="contactBox">
+			<div className="contactBox">
 				<RecentContactList data = {this.state.dataState}/>
 			</div>
 		);
