@@ -6,10 +6,10 @@ var Wrapper = React.createClass({
   componentDidMount: function() {
     var socket = io();
     socket.emit("myID", "Sindy Li");
-  },
-  render: funcon(){
+  
+  render: function(){
     return(
-      <div className="wrapper">
+      <div className="wrappert">
         <h1>StuffPass</h1>
         <RecentContactBox/>
         <h2>Chatting Part</h2>
