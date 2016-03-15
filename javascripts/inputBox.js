@@ -1,3 +1,5 @@
+import React from 'react';
+
 var InputBox = React.createClass({
   getInitialState: function(){
     return {sender: '', msg: ''};

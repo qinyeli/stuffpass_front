@@ -25,7 +25,6 @@ var Contact = React.createClass({
         </span>
       </div>
 	);}
-			}
 	} // render
 }); // Contact
 

@@ -8,8 +8,8 @@ var RecentContactBox = React.createClass({
 	},
 
 	componentDidMount: function() {
-		var socket = io();
-		socket.emit("myID", "Sindy Li");
+		//var socket = io();
+		//socket.emit("myID", "Sindy Li");
 
 		var _this = this;
 		socket.on("initialStatus", function(contactStatus) {

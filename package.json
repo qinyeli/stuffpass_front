@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node status.js",
     "build": "browserify -t babelify --presets react --presets es2015 -d -e javascripts/chat.jsx -o bundle.js -v",
-    "build-watch": "watchify -t babelify --presets es2015 --presets react -d -e javascripts/chat.jsx -o bundle.js -v"
+    "build-watch": "watchify -t babelify --presets es2015 --presets react -d -e javascripts/chat.jsx -o public/bundle.js -v"
   },
   "author": [
     "qinyeli",
