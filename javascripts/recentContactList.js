@@ -19,7 +19,7 @@ var RecentContactList = React.createClass({
 			);
 		});
 		return (
-			<div className="contactList">
+			<div className="contactList"   style="background: #3a3f51; color: '#a6a8b1'; marginRight: 600;">
 				<h2>Contact List</h2>
 			  {contactNodes}
 			</div>
