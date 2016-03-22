@@ -8,13 +8,15 @@ var Contact = React.createClass({
 			<span className = "StatusTrue">
 	        O  
 	        </span>
-	        <span className="contactName">
+	        <span className="contactName" onClick = {this.props.send_contact_id(this.props.id)}>
 					{this.props.contactName}
 			</span>		
 					<span> is </span>
 					{this.props.contactStatus}
 			</div>
-		);} else {
+		);}
+
+			else {
 				return(
       <div className="contact">
       <span className = "StatusFalse">

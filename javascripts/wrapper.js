@@ -1,21 +1,51 @@
-import RecentContactBox from './recentContactBox.js';
-import InputBox from './inputBox.js';
+import RecentContactList from './recentContactList.js';
+import MessageBox from './messageBox.js';
 import React from 'react';
 
+var socket = io();
+
 var Wrapper = React.createClass({
+
+  getInitialState: function() {
+    return {contactState: [{ id:0, contactName:"No one", contactStatus: "online"}] }
+    //This means I set the initial state of contactState to the prop data
+  },
+
   componentDidMount: function() {
-    var socket = io();
-    socket.emit("myID", "Sindy Li");
+    socket.emit("myID", "Sindy Li"); // to tell the backend that I am online
+
+    var _this = this;
+
+    socket.on("initialStatus", function(contactStatus) {
+      console.log("Got the initial status");
+      _this.setState({contactState: contactStatus});
+    })
+
+    socket.on("updateStatus", function(contactStatus) {
+      console.log("Got update status");
+      var oldState = _this.state.contactState;
+      _this.setState({contactState: contactStatus.concat(oldState) });
+    });
+  },
+
+  send_contact_id: function(contact_id) {
+    socket.emit("contactID", contact_id);
+  },
   
-  render: function(){
+  send_message: function(message) {
+    socket.emit("chat_message", message);
+  },
+
+  render: function() {
     return(
-      <div className="wrappert">
+      <div className="wrapper">
         <h1>StuffPass</h1>
-        <RecentContactBox/>
+        <RecentContactList data = {this.state.contactState} send_contact_id = {this.send_contact_id} />
+
         <h2>Chatting Part</h2>
-        <InputBox />
+        <MessageBox send_message = {this.send_message}/>
       </div>
-      );
+    );
   }
 });
 
