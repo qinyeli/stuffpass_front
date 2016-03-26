@@ -60,3 +60,13 @@ p, ul {
 ul {
   padding-left: 30px;
 }
+
+.contactBox {
+  font-size: 20em;
+}
+.StatusTrue {
+  color: #1183c4;
+}
+.StatusFalse {
+  color: #8183c4;
+}

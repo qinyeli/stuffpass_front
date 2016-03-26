@@ -3,7 +3,7 @@ import Message from './message.js';
 var MessageList = React.createClass({
   render() {
       return (
-          <div className='messageList' style="border: "2px solid #a6a8b1"; marginRight: 600;">
+          <div className='messageList'>
               {
                   this.props.messages.map((message, i) => {
                       return (
