@@ -16,15 +16,23 @@ var Wrapper = React.createClass({
 
     var _this = this;
 
-    socket.on("initialStatus", function(contactStatus) {
+    socket.on("initialStatus", function(contactStatus) { // contactStatus is an array
       console.log("Got the initial status");
       _this.setState({contactState: contactStatus});
     })
 
-    socket.on("updateStatus", function(contactStatus) {
+    socket.on("updateStatus", function(contactStatus) { // contactStatus is an object
       console.log("Got update status");
       var oldState = _this.state.contactState;
-      _this.setState({contactState: contactStatus.concat(oldState) });
+      
+      for (var i = 0; i < oldState.length; ++i) {
+        if (oldState[i].id == contactStatus.id) {
+          oldState[i].contactStatus = contactStatus;
+          break;
+        }
+      }
+
+      _this.setState({contactState: oldState});
     });
   },
 

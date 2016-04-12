@@ -21,14 +21,12 @@ app.get('/', function(req, res){
 
 var contactStatus1 = [
 	{id:1, contactName:"Harry Potter", contactStatus: "offline"},
-	{id:2, contactName:"Ron Weasley", contactStatus: "online"}
+	{id:2, contactName:"Ron Weasley", contactStatus: "online"},
+	{id:3, contactName:"Hermione Granger", contactStatus: "offline"}
 ];
 
-var contactStatus2 = [
-	{id:3, contactName:"Hermione Granger", contactStatus: "offline"},
-	{id:2, contactName:"Ron Weasley", contactStatus: "offline"},
-	{id:4, contactName:"Albus Dumbledore", contactStatus: "online"}
-];
+var contactStatus2 = {id:3, contactName:"Hermione Granger", contactStatus: "online"};
+var contactStatus3 = {id:2, contactName:"Ron Weasley", contactStatus: "offline"};
 
 io.on('connection', function(socket){
 	console.log("On connection");
@@ -37,6 +35,8 @@ io.on('connection', function(socket){
 		socket.emit("initialStatus", contactStatus1);
 		console.log("Initial status sent");
 		socket.emit("updateStatus", contactStatus2);
+		console.log("Update status sent");
+		socket.emit("updateStatus", contactStatus3);
 		console.log("Update status sent");
 	});
 });
